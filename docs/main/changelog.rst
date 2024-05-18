@@ -1,11 +1,17 @@
 Changelog
 =========
 
-This document describes all the changes in *Dependency Injector* framework 
+This document describes all the changes in *Dependency Injector* framework
 that were made in every particular version.
 
-From version 0.7.6 *Dependency Injector* framework strictly 
+From version 0.7.6 *Dependency Injector* framework strictly
 follows `Semantic versioning`_
+
+Develop
+-------
+
+- Drop support of Python 2.7, 3.5, and 3.6.
+- Regenerate C sources using Cython 0.29.36.
 
 4.41.0
 ------
