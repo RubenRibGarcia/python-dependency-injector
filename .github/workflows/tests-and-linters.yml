@@ -4,12 +4,12 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
 
-  tests-on-legacy-versions:
-    name: Run tests on legacy versions
-    runs-on: ubuntu-20.04
+  tests-on-pypy:
+    name: Run tests on pypy versions
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.7, pypy2.7, pypy3.9]
+        python-version: [pypy3.9, pypy3.10]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
@@ -18,7 +18,7 @@ jobs:
       - run: pip install tox
       - run: tox
         env:
-          TOXENV: ${{ matrix.python-version }}
+          TOXENV: pypy
 
   test-on-different-versions:
     name: Run tests
@@ -40,7 +40,6 @@ jobs:
     name: Run tests with coverage
     runs-on: ubuntu-latest
     env:
-      DEPENDENCY_INJECTOR_DEBUG_MODE: 1
       COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
